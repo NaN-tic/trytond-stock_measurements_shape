@@ -1,0 +1,15 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.action,name:wizard_purchase_measurements_shape_creation"
+msgid "Create/Find product with same code and different shape/measurements"
+msgstr "Crear/Buscar producto con el mismo código y distinta forma/medidas"
+
+msgctxt "model:ir.action,name:wizard_sale_measurements_shape_creation"
+msgid "Create/Find product with same code and different shape/measurements"
+msgstr "Crear/Buscar producto con el mismo código y distinta forma/medidas"
+
+msgctxt "model:ir.action,name:wizard_stock_measurements_shape_creation"
+msgid "Create/Find product with same code and different shape/measurements"
+msgstr "Crear/Buscar producto con el mismo código y distinta forma/medidas"

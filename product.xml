@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!-- This file is part stock_measurements_shape module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.wizard"
+            id="wizard_stock_measurements_shape_creation">
+            <field name="name">Create/Find product with same code and different shape/measurements</field>
+            <field name="wiz_name">product.measurements_shape_creation</field>
+            <field name="model">stock.move</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_stock_measurements_shape_creation_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.move,-1</field>
+            <field name="action"
+                ref="wizard_stock_measurements_shape_creation"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_stock_measurements_shape_creation-group_product_admin">
+            <field name="action"
+                ref="wizard_stock_measurements_shape_creation"/>
+            <field name="group" ref="product.group_product_admin"/>
+        </record>
+
+        <record model="ir.action.wizard"
+            id="wizard_sale_measurements_shape_creation">
+            <field name="name">Create/Find product with same code and different shape/measurements</field>
+            <field name="wiz_name">product.measurements_shape_creation</field>
+            <field name="model">sale.line</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_sale_measurements_shape_creation_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">sale.line,-1</field>
+            <field name="action"
+                ref="wizard_sale_measurements_shape_creation"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_sale_measurements_shape_creation-group_product_admin">
+            <field name="action"
+                ref="wizard_sale_measurements_shape_creation"/>
+            <field name="group" ref="product.group_product_admin"/>
+        </record>
+
+        <record model="ir.action.wizard"
+            id="wizard_purchase_measurements_shape_creation">
+            <field name="name">Create/Find product with same code and different shape/measurements</field>
+            <field name="wiz_name">product.measurements_shape_creation</field>
+            <field name="model">purchase.line</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_purchase_measurements_shape_creation_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">purchase.line,-1</field>
+            <field name="action"
+                ref="wizard_purchase_measurements_shape_creation"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_purchase_measurements_shape_creation-group_product_admin">
+            <field name="action"
+                ref="wizard_purchase_measurements_shape_creation"/>
+            <field name="group" ref="product.group_product_admin"/>
+        </record>
+    </data>
+</tryton>

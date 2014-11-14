@@ -1,0 +1,63 @@
+# This file is part stock_measurements_shape module for Tryton.
+# The COPYRIGHT file at the top level of this repository contains
+# the full copyright notices and license terms.
+from trytond.wizard import Wizard
+from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
+
+__all__ = ['ProductMeasurementsShapeCreation']
+__metaclass__ = PoolMeta
+
+
+class ProductMeasurementsShapeCreation(Wizard):
+    __name__ = 'product.measurements_shape_creation'
+
+    def default_start(self, fields):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        SaleLine = pool.get('sale.line')
+        PurchaseLine = pool.get('purchase.line')
+
+        context = Transaction().context
+        if context['active_model'] in ['stock.move', 'sale.line',
+                'purchase.line']:
+            if context['active_model'] == 'stock.move':
+                line = Move(context['active_id'])
+            elif context['active_model'] == 'sale.line':
+                line = SaleLine(context['active_id'])
+            elif context['active_model'] == 'purchase.line':
+                line = PurchaseLine(context['active_id'])
+            product_id = line.product.id
+            new_context = {
+                'active_model': 'product.product',
+                'active_id': product_id,
+                'active_ids': [product_id],
+                }
+            with Transaction().set_context(new_context):
+                return super(ProductMeasurementsShapeCreation,
+                    self).default_start(fields)
+        return super(ProductMeasurementsShapeCreation,
+            self).default_start(fields)
+
+    def do_create_(self, action):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        SaleLine = pool.get('sale.line')
+        PurchaseLine = pool.get('purchase.line')
+
+        context = Transaction().context
+        if context['active_model'] in ['stock.move', 'sale.line',
+                'purchase.line']:
+            if context['active_model'] == 'stock.move':
+                line = Move(context['active_id'])
+            elif context['active_model'] == 'sale.line':
+                line = SaleLine(context['active_id'])
+            elif context['active_model'] == 'purchase.line':
+                line = PurchaseLine(context['active_id'])
+            template = line.product.template
+            new_template = self.create_find(template)
+            line.product = new_template.products[0]
+            line.save()
+            return None, {}
+
+        return super(ProductMeasurementsShapeCreation, self).do_create_(action)
