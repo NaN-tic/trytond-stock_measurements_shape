@@ -12,6 +12,16 @@ __metaclass__ = PoolMeta
 class ProductMeasurementsShapeCreation(Wizard):
     __name__ = 'product.measurements_shape_creation'
 
+    @classmethod
+    def __setup__(cls):
+        super(ProductMeasurementsShapeCreation, cls).__setup__()
+        cls._error_messages.update({
+                'stock_move_readonly':
+                ('The stock move is not in draft state.'),
+                'sale_readonly': ('The sale is not in draft state.'),
+                'purchase_readonly': ('The purchase is not in draft state.'),
+                })
+
     def default_start(self, fields):
         pool = Pool()
         Move = pool.get('stock.move')
@@ -23,10 +33,16 @@ class ProductMeasurementsShapeCreation(Wizard):
                 'purchase.line']:
             if context['active_model'] == 'stock.move':
                 line = Move(context['active_id'])
+                if line.state != 'draft':
+                    self.raise_user_error('stock_move_readonly')
             elif context['active_model'] == 'sale.line':
                 line = SaleLine(context['active_id'])
+                if line.sale.state != 'draft':
+                    self.raise_user_error('sale_readonly')
             elif context['active_model'] == 'purchase.line':
                 line = PurchaseLine(context['active_id'])
+                if line.purchase.state != 'draft':
+                    self.raise_user_error('purchase_readonly')
             product_id = line.product.id
             new_context = {
                 'active_model': 'product.product',
