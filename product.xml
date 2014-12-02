@@ -62,5 +62,45 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
                 ref="wizard_purchase_measurements_shape_creation"/>
             <field name="group" ref="product.group_product_admin"/>
         </record>
+
+        <record model="ir.action.wizard"
+            id="wizard_bom_input_measurements_shape_creation">
+            <field name="name">Create/Find product with same code and different shape/measurements</field>
+            <field name="wiz_name">product.measurements_shape_creation</field>
+            <field name="model">production.bom.input</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_bom_input_measurements_shape_creation_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">production.bom.input,-1</field>
+            <field name="action"
+                ref="wizard_bom_input_measurements_shape_creation"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_bom_input_measurements_shape_creation-group_product_admin">
+            <field name="action"
+                ref="wizard_bom_input_measurements_shape_creation"/>
+            <field name="group" ref="product.group_product_admin"/>
+        </record>
+
+        <record model="ir.action.wizard"
+            id="wizard_bom_output_measurements_shape_creation">
+            <field name="name">Create/Find product with same code and different shape/measurements</field>
+            <field name="wiz_name">product.measurements_shape_creation</field>
+            <field name="model">production.bom.output</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_bom_output_measurements_shape_creation_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">production.bom.output,-1</field>
+            <field name="action"
+                ref="wizard_bom_output_measurements_shape_creation"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_bom_output_measurements_shape_creation-group_product_admin">
+            <field name="action"
+                ref="wizard_bom_output_measurements_shape_creation"/>
+            <field name="group" ref="product.group_product_admin"/>
+        </record>
     </data>
 </tryton>

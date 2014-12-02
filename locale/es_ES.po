@@ -14,6 +14,14 @@ msgctxt "error:product.measurements_shape_creation:"
 msgid "The stock move is not in draft state."
 msgstr "La línea de albarán no está en estado borrador."
 
+msgctxt "model:ir.action,name:wizard_bom_input_measurements_shape_creation"
+msgid "Create/Find product with same code and different shape/measurements"
+msgstr "Crear/Buscar producto con el mismo código y distinta forma/medidas"
+
+msgctxt "model:ir.action,name:wizard_bom_output_measurements_shape_creation"
+msgid "Create/Find product with same code and different shape/measurements"
+msgstr "Crear/Buscar producto con el mismo código y distinta forma/medidas"
+
 msgctxt "model:ir.action,name:wizard_purchase_measurements_shape_creation"
 msgid "Create/Find product with same code and different shape/measurements"
 msgstr "Crear/Buscar producto con el mismo código y distinta forma/medidas"
