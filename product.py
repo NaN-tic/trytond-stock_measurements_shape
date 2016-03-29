@@ -6,7 +6,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 __all__ = ['ProductMeasurementsShapeCreation']
-__metaclass__ = PoolMeta
 
 MODELS = ['stock.move', 'sale.line', 'purchase.line', 'production.bom.input',
     'production.bom.output']
